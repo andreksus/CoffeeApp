@@ -16,19 +16,62 @@ class Menu extends StatelessWidget {
         title: const Categories(categories: categories),
       ),
       body: CustomScrollView(slivers: [
-        const SliverPadding(
-            padding: EdgeInsets.all(16),
-            sliver: SliverToBoxAdapter(child: CategoryTitle())),
         SliverPadding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+            sliver: SliverToBoxAdapter(child: CategoryTitle(title: categories[0]))),
+        SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
             sliver: SliverGrid.count(
+              childAspectRatio: 0.75,
               crossAxisSpacing: 16,
               crossAxisCount: 2,
               children: const [
                 CoffeeCard(),
                 CoffeeCard(),
               ],
-            ))
+            )),  
+            SliverPadding(
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+            sliver: SliverToBoxAdapter(child: CategoryTitle(title: categories[1]))),
+        SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            sliver: SliverGrid.count(
+              childAspectRatio: 0.75,
+              crossAxisSpacing: 16,
+              crossAxisCount: 2,
+              children: const [
+                CoffeeCard(),
+                CoffeeCard(),
+              ],
+            )),
+            SliverPadding(
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+            sliver: SliverToBoxAdapter(child: CategoryTitle(title: categories[2]))),
+        SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            sliver: SliverGrid.count(
+              childAspectRatio: 0.75,
+              crossAxisSpacing: 16,
+              crossAxisCount: 2,
+              children: const [
+                CoffeeCard(),
+                CoffeeCard(),
+              ],
+            )),
+            SliverPadding(
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+            sliver: SliverToBoxAdapter(child: CategoryTitle(title: categories[3]))),
+        SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            sliver: SliverGrid.count(
+              childAspectRatio: 0.75,
+              crossAxisSpacing: 16,
+              crossAxisCount: 2,
+              children: const [
+                CoffeeCard(),
+                CoffeeCard(),
+              ],
+            )),          
       ]),
     );
   }
