@@ -1,8 +1,9 @@
+import 'package:coffee_app/src/features/menu/view/order.dart';
 import 'package:flutter/material.dart';
 
 class CoffeeCard extends StatelessWidget {
   const CoffeeCard({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,18 +19,7 @@ class CoffeeCard extends StatelessWidget {
                 child: Text("Олеато",
                     style:
                         TextStyle(fontSize: 16, fontWeight: FontWeight.w500))),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 35),
-              decoration: BoxDecoration(
-                color: const Color(0xff85C3DE),
-                borderRadius: BorderRadius.circular(16.0),
-              ),
-              child: const Text("139 руб",
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.white
-                  )),
-            )
+            const Order()
           ],
         ));
   }

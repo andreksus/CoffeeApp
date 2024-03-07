@@ -18,21 +18,8 @@ class Menu extends StatelessWidget {
       body: CustomScrollView(slivers: [
         SliverPadding(
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
-            sliver: SliverToBoxAdapter(child: CategoryTitle(title: categories[0]))),
-        SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 32),
-            sliver: SliverGrid.count(
-              childAspectRatio: 0.75,
-              crossAxisSpacing: 16,
-              crossAxisCount: 2,
-              children: const [
-                CoffeeCard(),
-                CoffeeCard(),
-              ],
-            )),  
-            SliverPadding(
-            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
-            sliver: SliverToBoxAdapter(child: CategoryTitle(title: categories[1]))),
+            sliver:
+                SliverToBoxAdapter(child: CategoryTitle(title: categories[0]))),
         SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 32),
             sliver: SliverGrid.count(
@@ -44,9 +31,10 @@ class Menu extends StatelessWidget {
                 CoffeeCard(),
               ],
             )),
-            SliverPadding(
+        SliverPadding(
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
-            sliver: SliverToBoxAdapter(child: CategoryTitle(title: categories[2]))),
+            sliver:
+                SliverToBoxAdapter(child: CategoryTitle(title: categories[1]))),
         SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 32),
             sliver: SliverGrid.count(
@@ -58,9 +46,10 @@ class Menu extends StatelessWidget {
                 CoffeeCard(),
               ],
             )),
-            SliverPadding(
+        SliverPadding(
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
-            sliver: SliverToBoxAdapter(child: CategoryTitle(title: categories[3]))),
+            sliver:
+                SliverToBoxAdapter(child: CategoryTitle(title: categories[2]))),
         SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 32),
             sliver: SliverGrid.count(
@@ -71,7 +60,22 @@ class Menu extends StatelessWidget {
                 CoffeeCard(),
                 CoffeeCard(),
               ],
-            )),          
+            )),
+        SliverPadding(
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+            sliver:
+                SliverToBoxAdapter(child: CategoryTitle(title: categories[3]))),
+        SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            sliver: SliverGrid.count(
+              childAspectRatio: 0.75,
+              crossAxisSpacing: 16,
+              crossAxisCount: 2,
+              children: const [
+                CoffeeCard(),
+                CoffeeCard(),
+              ],
+            )),
       ]),
     );
   }

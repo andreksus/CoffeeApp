@@ -9,16 +9,8 @@ class Category extends StatefulWidget {
 }
 
 class _Category extends State<Category> {
-  late Color _textColor;
-  late Color _backColor;
-
-  @override
-  void initState() {
-    //Начальное значение цвета кнопки
-    _textColor = Colors.black;
-    _backColor = Colors.white;
-    super.initState();
-  }
+  late Color _textColor = Colors.black;
+  late Color _backColor = Colors.white;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +28,7 @@ class _Category extends State<Category> {
       },
       child: Container(
         padding: const EdgeInsets.all(8.0),
+        margin: const EdgeInsets.only(right: 8.0),
         decoration: BoxDecoration(
           color: _backColor,
           borderRadius: BorderRadius.circular(16.0),
