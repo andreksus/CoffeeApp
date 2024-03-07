@@ -19,7 +19,6 @@ class _Category extends State<Category> {
           isActive = !isActive;
         }),
         child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 8.0),
           padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
             color: const Color(0xff85C3DE),
@@ -38,7 +37,6 @@ class _Category extends State<Category> {
           isActive = true;
         }),
         child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 8.0),
           padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
             color: Colors.white,

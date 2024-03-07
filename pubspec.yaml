@@ -22,3 +22,6 @@ flutter:
   uses-material-design: true
   
   generate: true
+
+  assets: 
+    - lib/src/assets/

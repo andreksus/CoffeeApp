@@ -1,5 +1,7 @@
 import 'package:coffee_app/src/features/menu/data/categories.dart';
 import 'package:coffee_app/src/features/menu/view/categories.dart';
+import 'package:coffee_app/src/features/menu/view/category-title.dart';
+import 'package:coffee_app/src/features/menu/view/coffee-card.dart';
 import 'package:flutter/material.dart';
 
 class Menu extends StatelessWidget {
@@ -13,8 +15,20 @@ class Menu extends StatelessWidget {
         backgroundColor: const Color(0xffF7FAF8),
         title: const Categories(categories: categories),
       ),
-      body: const CustomScrollView(slivers: [
-        
+      body: CustomScrollView(slivers: [
+        const SliverPadding(
+            padding: EdgeInsets.all(16),
+            sliver: SliverToBoxAdapter(child: CategoryTitle())),
+        SliverPadding(
+            padding: const EdgeInsets.all(16),
+            sliver: SliverGrid.count(
+              crossAxisSpacing: 16,
+              crossAxisCount: 2,
+              children: const [
+                CoffeeCard(),
+                CoffeeCard(),
+              ],
+            ))
       ]),
     );
   }
