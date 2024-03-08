@@ -1,4 +1,5 @@
 import 'package:coffee_app/src/features/menu/data/categories.dart';
+import 'package:coffee_app/src/features/menu/data/coffee.dart';
 import 'package:coffee_app/src/features/menu/view/categories.dart';
 import 'package:coffee_app/src/features/menu/view/category-title.dart';
 import 'package:coffee_app/src/features/menu/view/coffee-card.dart';
@@ -16,15 +17,15 @@ class Menu extends StatelessWidget {
         backgroundColor: const Color(0xffF7FAF8),
         title: const Categories(categories: categories),
       ),
-      body: CustomScrollView(slivers: [
+      body: CustomScrollView(slivers: [ 
         CategoryTitleSliver(title: categories[0]),
-        const CoffeeCardsGridSliver(),
+        const CoffeeCardsGridSliver(list: blackCoffee),
         CategoryTitleSliver(title: categories[1]),
-        const CoffeeCardsGridSliver(),
+        const CoffeeCardsGridSliver(list: coffeeMilk),
         CategoryTitleSliver(title: categories[2]),
-        const CoffeeCardsGridSliver(),
+        const CoffeeCardsGridSliver(list: authorsCoffee),
         CategoryTitleSliver(title: categories[3]),
-        const CoffeeCardsGridSliver(),
+        const CoffeeCardsGridSliver(list: tea),
       ]),
     );
   }
