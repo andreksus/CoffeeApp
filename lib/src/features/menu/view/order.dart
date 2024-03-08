@@ -33,9 +33,9 @@ class _OrderState extends State<Order> {
     } else {
       return Container(
         decoration: const BoxDecoration(
-          color: Colors.white,
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             GestureDetector(
               onTap: () {
@@ -45,7 +45,7 @@ class _OrderState extends State<Order> {
                 });
               },
               child: Container(
-                margin: const EdgeInsets.only(right: 8, left: 23),
+                margin: const EdgeInsets.only(right: 8),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
                     color: const Color(0xff85C3DE)),
