@@ -19,26 +19,40 @@ class Menu extends StatelessWidget {
       backgroundColor: const Color(0xffF7FAF8),
       appBar: AppBar(
         backgroundColor: const Color(0xffF7FAF8),
-        title: Categories(categories: categories),
+        title: const Categories(categories: categories),
       ),
       body: CustomScrollView(slivers: [
         SliverVisibilityDetector(key: titleCategoriesKeys[0], sliver: CategoryTitleSliver(title: categories[0]), onVisibilityChanged: (VisibilityInfo info){
           debugPrint("${info.visibleFraction} + ${titleCategoriesKeys[0]}");
+          getInfoVision(info.visibleFraction);
         }),
-        CoffeeCardsGridSliver(list: blackCoffee, key: categoriesKeys[0]),
+        const CoffeeCardsGridSliver(list: blackCoffee),
         SliverVisibilityDetector(key: titleCategoriesKeys[1], sliver: CategoryTitleSliver(title: categories[1]), onVisibilityChanged: (VisibilityInfo info){
           debugPrint("${info.visibleFraction} + ${titleCategoriesKeys[1]}");
         }),        
-        CoffeeCardsGridSliver(list: coffeeMilk, key: categoriesKeys[1]),
+        const CoffeeCardsGridSliver(list: coffeeMilk),
         SliverVisibilityDetector(key: titleCategoriesKeys[2], sliver: CategoryTitleSliver(title: categories[2]), onVisibilityChanged: (VisibilityInfo info){
           debugPrint("${info.visibleFraction} + ${titleCategoriesKeys[2]}");
         }),
-        CoffeeCardsGridSliver(list: authorsCoffee, key: categoriesKeys[2]),
+        const CoffeeCardsGridSliver(list: authorsCoffee),
         SliverVisibilityDetector(key: titleCategoriesKeys[3], sliver: CategoryTitleSliver(title: categories[3]), onVisibilityChanged: (VisibilityInfo info){
           debugPrint("${info.visibleFraction} + ${titleCategoriesKeys[3]}");
         }),        
-        CoffeeCardsGridSliver(list: tea, key: categoriesKeys[3]),
+        const CoffeeCardsGridSliver(list: tea),
       ]),
     );
   }
+}
+
+void getInfoVision(double info){
+  if (info == 0){
+    debugPrint("info");
+  } else {
+
+    // setActiveCategory()
+  }
+}
+
+void setActiveCategory(){
+
 }

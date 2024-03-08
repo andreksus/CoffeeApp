@@ -4,12 +4,12 @@ List<Key> titleCategoriesKeys = [
   const Key("titleBlackCoffee"),
   const Key("titleMilkCoffee"),
   const Key("titleAuthorsCoffee"),
-  const Key("titleTea"),
+  const Key("tea"),
 ];
 
-List<Key> categoriesKeys = [
-  const Key("blackCoffee"),
-  const Key("milkCoffee"),
-  const Key("authorsCoffee"),
-  const Key("tea"),
+List<GlobalKey> categoriesKeys = [
+  GlobalKey(debugLabel: "blackCoffee"),
+  GlobalKey(debugLabel: "milkCoffee"),
+  GlobalKey(debugLabel: "authorsCoffee"),
+  GlobalKey(debugLabel: "tea"),
 ];
