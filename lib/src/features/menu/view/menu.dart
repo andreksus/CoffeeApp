@@ -48,7 +48,7 @@ void getInfoVision(double info){
   if (info == 0){
     debugPrint("info");
   } else {
-
+      
     // setActiveCategory()
   }
 }
