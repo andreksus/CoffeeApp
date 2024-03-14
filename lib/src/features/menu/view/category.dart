@@ -4,19 +4,17 @@ class Category extends StatefulWidget {
   const Category({super.key, required this.category, required this.isActive});
   final String category;
   final bool isActive;
+
+  bool getActive(){
+    return isActive;
+  }
+
   @override
   State<Category> createState() => _CategoryState();
 }
 
 class _CategoryState extends State<Category> {
   late bool isActive;
-
-  void changeActive() {
-    setState(() {
-      isActive = !isActive;
-      debugPrint("isActive: $isActive");
-    });
-  }
 
   @override
   void initState() {
@@ -30,11 +28,11 @@ class _CategoryState extends State<Category> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => {
-        
-      },
-    );
+    if (isActive){
+      return getActiveCategory(widget.category);
+    } else {
+      return getNotActiveCategory(widget.category);
+    }
   }
 }
 

@@ -3,27 +3,6 @@ import 'package:coffee_app/src/features/menu/data/keys.dart';
 import 'package:coffee_app/src/features/menu/view/category.dart';
 import 'package:flutter/material.dart';
 
-class Categories2 extends StatelessWidget {
-  const Categories2({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(children: [
-        Category(
-            category: categories[0], isActive: true, key: categoriesKeys[0]),
-        Category(
-            category: categories[1], isActive: false, key: categoriesKeys[1]),
-        Category(
-            category: categories[2], isActive: false, key: categoriesKeys[2]),
-        Category(
-            category: categories[3], isActive: false, key: categoriesKeys[3]),
-      ]),
-    );
-  }
-}
-
 class Categories extends StatefulWidget {
   const Categories({super.key, required this.categories});
   final List<String> categories;
@@ -35,70 +14,64 @@ class Categories extends StatefulWidget {
 class _CategoriesState extends State<Categories> {
   late int indexOfActiveElement;
   late List<Widget> categoriesCards;
-  late List<GlobalKey> keys = [
-    GlobalKey(debugLabel: "$categories[0]"),
-    GlobalKey(debugLabel: "$categories[1]"),
-    GlobalKey(debugLabel: "$categories[2]"),
-    GlobalKey(debugLabel: "$categories[3]"),
-  ];
 
-  final dataKey = GlobalKey(debugLabel: "$categories[0]");
+  late List<GlobalKey> keys;
+
   @override
   void initState() {
     super.initState();
     indexOfActiveElement = 0;
-    keys = [
-      GlobalKey(debugLabel: "$categories[0]"),
-      GlobalKey(debugLabel: "$categories[1]"),
-      GlobalKey(debugLabel: "$categories[2]"),
-      GlobalKey(debugLabel: "$categories[3]"),
-    ];
-    categoriesCards = [
-      GestureDetector(
-          onTap: () => {
-                Scrollable.ensureVisible(keys[0].currentContext ?? context),
-                indexOfActiveElement = 0
-              },
-          child:
-              Category(category: categories[0], isActive: true, key: keys[0])),
-      GestureDetector(
-        onTap: () => {
-          Scrollable.ensureVisible(keys[1].currentContext ?? context),
-          indexOfActiveElement = 1
-        },
-        child: Category(category: categories[1], isActive: false, key: keys[1]),
-      ),
-      GestureDetector(
-        onTap: () => {
-          Scrollable.ensureVisible(keys[2].currentContext ?? context),
-          indexOfActiveElement = 2
-        },
-        child: Category(category: categories[2], isActive: false, key: keys[2]),
-      ),
-      GestureDetector(
-        onTap: () => {
-          Scrollable.ensureVisible(keys[3].currentContext ?? context),
-          indexOfActiveElement = 3
-        },
-        child: Category(category: categories[3], isActive: false, key: keys[3]),
-      )
-    ];
   }
 
-  int setIndexOfActiveElement(int index) {
-    return index;
+  void update(int index) {
+    setState(() {
+      indexOfActiveElement = index;
+      debugPrint("change index on: $indexOfActiveElement");
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Row(children: categoriesCards));
+        child: Row(children: [
+          GestureDetector(
+            onTap: () {
+              update(0);
+            },
+            child: getCategoryByIndexOfActive(indexOfActiveElement, 0),
+          ),
+          GestureDetector(
+            onTap: () {
+              update(1);
+            },
+            child: getCategoryByIndexOfActive(indexOfActiveElement, 1),
+          ),
+          GestureDetector(
+            onTap: () {
+              update(2);
+            },
+            child: getCategoryByIndexOfActive(indexOfActiveElement, 2),
+          ),
+          GestureDetector(
+            onTap: () {
+              update(3);
+            },
+            child: getCategoryByIndexOfActive(indexOfActiveElement, 3),
+          )
+        ]));
   }
 }
 
-
-
+Category getCategoryByIndexOfActive(int indexOfActive, int currentIndex) {
+  if (indexOfActive == currentIndex) {
+    debugPrint("Index активный");
+    return Category(category: categories[currentIndex], isActive: true);
+  } else {
+    debugPrint("Index неактивный: $currentIndex. Активный - $indexOfActive");
+    return Category(category: categories[currentIndex], isActive: false);
+  }
+}
 // child: SingleChildScrollView(
         //     scrollDirection: Axis.horizontal,
         //     child: Row(children: [
