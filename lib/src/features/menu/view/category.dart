@@ -27,6 +27,12 @@ class _CategoryState extends State<Category> {
   }
 
   @override
+  void didUpdateWidget(covariant Category oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    
+  }
+
+  @override
   Widget build(BuildContext context) {
     if (isActive){
       return getActiveCategory(widget.category);
