@@ -1,3 +1,4 @@
+import 'package:coffee_app/src/features/menu/data/keys.dart';
 import 'package:flutter/material.dart';
 
 class Categories extends StatefulWidget {
@@ -15,7 +16,7 @@ class Categories extends StatefulWidget {
 }
 
 class _CategoriesState extends State<Categories> {
-  late int _activeIndex;
+  late int _activeIndex = widget.indexOfActiveElement;
 
   void _setActiveIndex(int index) {
     setState(() {
@@ -23,10 +24,19 @@ class _CategoriesState extends State<Categories> {
     });
   }
 
-  Widget buildCategory(int index, String title) {
+  @override
+  void didUpdateWidget(covariant Categories oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _activeIndex = widget.indexOfActiveElement;
+    Scrollable.ensureVisible(keys[_activeIndex].currentContext ?? context);
+  }
+
+  Widget buildCategory(int index, String title, GlobalKey key) {
     return GestureDetector(
+        key: key,
         onTap: () {
           _setActiveIndex(index);
+          Scrollable.ensureVisible(key.currentContext ?? context);
           widget.changeIndex(index);
         },
         child: _activeIndex == index
@@ -59,33 +69,13 @@ class _CategoriesState extends State<Categories> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    _activeIndex = 0;
-  }
-
-  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
             children: widget.categories
-                .map((title) =>
-                    buildCategory(widget.categories.indexOf(title), title))
+                .map((title) => buildCategory(widget.categories.indexOf(title),
+                    title, keys[widget.categories.indexOf(title)]))
                 .toList()));
   }
 }
-
-// Category getCategoryByIndexOfActive(int indexOfActive, int currentIndex) {
-//   if (indexOfActive == currentIndex) {
-//     debugPrint("Index активный");
-//     debugPrint(
-//         "Состояние элемента: $currentIndex - ${Category(category: categories[currentIndex], isActive: true).getActive()}");
-//     return Category(category: categories[currentIndex], isActive: true);
-//   } else {
-//     debugPrint("Index неактивный: $currentIndex. Активный - $indexOfActive");
-//     debugPrint(
-//         "Состояние элемента: $currentIndex - ${Category(category: categories[currentIndex], isActive: false).getActive()}");
-//     return Category(category: categories[currentIndex], isActive: false);
-//   }
-// }

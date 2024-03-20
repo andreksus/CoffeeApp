@@ -4,4 +4,3 @@ const List<String> categories = [
   "Авторские напитки",
   "Чай",
 ];
-

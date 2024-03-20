@@ -21,6 +21,7 @@ class _OrderState extends State<Order> {
           });
         },
         child: Container(
+          margin: const EdgeInsets.only(bottom: 16),
           padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 35),
           decoration: BoxDecoration(
             color: const Color(0xff85C3DE),

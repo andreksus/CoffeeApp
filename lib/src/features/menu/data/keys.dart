@@ -1,10 +1,11 @@
+import 'package:coffee_app/src/features/menu/data/categories.dart';
 import 'package:flutter/material.dart';
 
-List<Key> titleCategoriesKeys = [
-  const Key("titleBlackCoffee"),
-  const Key("titleMilkCoffee"),
-  const Key("titleAuthorsCoffee"),
-  const Key("tea"),
+List<GlobalKey> titleCategoriesKeys = [
+  GlobalKey(debugLabel: "titleBlackCoffee"),
+  GlobalKey(debugLabel: "titleMilkCoffee"),
+  GlobalKey(debugLabel: "titleAuthorsCoffee"),
+  GlobalKey(debugLabel: "tea"),
 ];
 
 List<GlobalKey> categoriesKeys = [
@@ -12,4 +13,11 @@ List<GlobalKey> categoriesKeys = [
   GlobalKey(debugLabel: "milkCoffee"),
   GlobalKey(debugLabel: "authorsCoffee"),
   GlobalKey(debugLabel: "tea"),
+];
+
+List<GlobalKey> keys = [
+  GlobalKey(),
+  GlobalKey(),
+  GlobalKey(),
+  GlobalKey(),
 ];
