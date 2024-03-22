@@ -20,3 +20,10 @@ const List<String> tea = [
   "Малиновый",
   "Черный чай",
 ];
+
+const List<List<String>> coffeList = [
+  blackCoffee,
+  coffeeMilk,
+  authorsCoffee,
+  tea
+];

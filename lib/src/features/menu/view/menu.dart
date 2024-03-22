@@ -23,6 +23,22 @@ class _MenuState extends State<Menu> {
     _activeIndex = 0;
   }
 
+  void _changeInfoScrollFirstTitle(double info) {
+    if (info == 0) {
+      _changeIndexWithoutScroll(1);
+    } else if (info == 1) {
+      _changeIndexWithoutScroll(0);
+    }
+  }
+
+  void _changeInfoScroll(double info, int index) {
+    if (info == 0) {
+      _changeIndexWithoutScroll(index);
+    } else if (info == 1 && _activeIndex == index) {
+      _changeIndexWithoutScroll(index - 1);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,50 +50,43 @@ class _MenuState extends State<Menu> {
             indexOfActiveElement: _activeIndex,
             changeIndex: _changeIndex),
       ),
-      body: CustomScrollView(slivers: [
-        SliverVisibilityDetector(
-            key: titleCategoriesKeys[0],
-            sliver: CategoryTitleSliver(title: categories[0]),
-            onVisibilityChanged: (VisibilityInfo info) {
-              debugPrint("${info.visibleFraction} + ${titleCategoriesKeys[0]}");
-              getInfoVision(info.visibleFraction);
-              if (info.visibleFraction == 0) {
-                _changeIndexWithoutScroll(1);
-              } else if (info.visibleFraction == 1) {
-                _changeIndexWithoutScroll(0);
-              }
-              //if 0.0, то меняем индекс категорий
-            }),
-        const CoffeeCardsGridSliver(list: blackCoffee),
-        SliverVisibilityDetector(
-            key: titleCategoriesKeys[1],
-            sliver: CategoryTitleSliver(title: categories[1]),
-            onVisibilityChanged: (VisibilityInfo info) {
-              debugPrint("${info.visibleFraction} + ${titleCategoriesKeys[0]}");
-              if (info.visibleFraction == 0) {
-                _changeIndexWithoutScroll(2);
-              } else if (info.visibleFraction == 1 && _activeIndex == 2) {
-                _changeIndexWithoutScroll(1);
-              }
-            }),
-        const CoffeeCardsGridSliver(list: coffeeMilk),
-        SliverVisibilityDetector(
-            key: titleCategoriesKeys[2],
-            sliver: CategoryTitleSliver(title: categories[2]),
-            onVisibilityChanged: (VisibilityInfo info) {
-              if (info.visibleFraction == 0) {
-                _changeIndexWithoutScroll(3);
-              } else if (info.visibleFraction == 1 && _activeIndex == 3) {
-                _changeIndexWithoutScroll(2);
-              }
-            }),
-        const CoffeeCardsGridSliver(list: authorsCoffee),
-        SliverVisibilityDetector(
-            key: titleCategoriesKeys[3],
-            sliver: CategoryTitleSliver(title: categories[3]),
-            onVisibilityChanged: (VisibilityInfo info) {}),
-        const CoffeeCardsGridSliver(list: tea),
-      ]),
+      body: CustomScrollView(
+        slivers: [
+          CategoryTitleSliver(
+              title: categories[0], key: titleCategoriesKeys[0]),
+          SliverVisibilityDetector(
+              key: coffeGridCategoriesKeys[0],
+              sliver: CoffeeCardsGridSliver(list: coffeList[0]),
+              onVisibilityChanged: (VisibilityInfo info) {
+                _changeInfoScrollFirstTitle(info.visibleFraction);
+              }),
+          CategoryTitleSliver(
+              title: categories[1], key: titleCategoriesKeys[1]),
+          SliverVisibilityDetector(
+              key: coffeGridCategoriesKeys[1],
+              sliver: CoffeeCardsGridSliver(list: coffeList[1]),
+              onVisibilityChanged: (VisibilityInfo info) {
+                _changeInfoScroll(info.visibleFraction, 2);
+              }),
+          CategoryTitleSliver(
+              title: categories[2], key: titleCategoriesKeys[2]),
+          SliverVisibilityDetector(
+              key: coffeGridCategoriesKeys[2],
+              sliver: CoffeeCardsGridSliver(list: coffeList[2]),
+              onVisibilityChanged: (VisibilityInfo info) {
+                _changeInfoScroll(info.visibleFraction, 3);
+              }),
+          CategoryTitleSliver(
+              title: categories[3], key: titleCategoriesKeys[3]),
+          SliverVisibilityDetector(
+              key: coffeGridCategoriesKeys[3],
+              sliver: CoffeeCardsGridSliver(list: coffeList[3]),
+              onVisibilityChanged: (VisibilityInfo info) {
+                // debugPrint("${info.visibleFraction} + 3");
+                //     _changeInfoScroll(info.visibleFraction, 3);
+              })
+        ],
+      ),
     );
   }
 

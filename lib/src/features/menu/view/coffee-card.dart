@@ -12,17 +12,15 @@ class CoffeeCard extends StatelessWidget {
             color: Colors.white, borderRadius: BorderRadius.circular(16.0)),
         child: Column(
           children: [
-            Expanded(
-              child: Padding(
-                  padding: const EdgeInsets.only(top: 16, bottom: 8),
-                  child: Image.asset('lib/src/assets/coffee.png')),
-            ),
+            Padding(
+                padding: const EdgeInsets.only(top: 16, bottom: 8),
+                child: Image.asset('lib/src/assets/coffee.png')),
             Padding(
                 padding: const EdgeInsets.only(bottom: 8),
                 child: Text(title,
                     style: const TextStyle(
                         fontSize: 16, fontWeight: FontWeight.w500))),
-            const Order()
+            const Padding(padding: EdgeInsets.only(bottom: 8), child: Order())
           ],
         ));
   }
